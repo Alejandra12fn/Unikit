@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniKit - Vitrina Virtual Universitaria</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        indigo: {
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                        },
+                        sky: {
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                        },
+                        emerald: {
+                            500: '#10b981',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .backdrop-blur-md {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-indigo-500 selection:text-white min-h-screen flex flex-col">
+
+    <!-- NAVEGACIÓN (NAVBAR) -->
+    <nav class="bg-white/90 backdrop-blur-md border-b border-slate-100 sticky top-0 z-40 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                
+                <!-- Logo UniKit -->
+                <a href="#" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-sky-500 p-0.5 shadow-md group-hover:scale-105 transition-transform">
+                        <div class="w-full h-full bg-white rounded-[10px] flex items-center justify-center relative overflow-hidden">
+                            <svg class="w-6 h-6 text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M6 9v5a6 6 0 0 0 12 0V9"/>
+                                <path d="M12 2L3 7l9 5 9-5-9-5z" fill="#4F46E5" stroke="none"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-extrabold text-xl tracking-tight text-slate-900 leading-none">Uni<span class="text-indigo-600">Kit</span></span>
+                        <span class="text-[10px] text-slate-500 font-medium tracking-wider uppercase">Vitrina Virtual</span>
+                    </div>
+                </a>
+
+                <!-- Links de Navegación -->
+                <div class="hidden md:flex items-center space-x-8 font-medium text-sm text-slate-600">
+                    <a href="#inicio" class="hover:text-indigo-600 transition">Inicio</a>
+                    <a href="#catalogo" class="hover:text-indigo-600 transition">Productos</a>
+                    <a href="#flujo-tecnico" class="hover:text-indigo-600 transition">Flujo Lean</a>
+                </div>
+
+                <!-- Botón rápido Telegram -->
+                <div class="flex items-center gap-3">
+                    <a id="nav-chat-btn" href="https://t.me/UniKitMVP_bot" target="_blank" class="bg-sky-500 hover:bg-sky-600 text-white font-medium text-xs sm:text-sm px-4 py-2 rounded-full shadow-md hover:shadow-sky-500/20 flex items-center gap-2 transition transform active:scale-95">
+                        <i class="fa-brands fa-telegram text-lg"></i>
+                        <span class="hidden sm:inline">Escribir a Telegram</span>
+                        <span class="sm:hidden">Telegram</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO COMPACTO Y RESPONSIVO CON DEGRADADO ACADÉMICO -->
+    <section id="inicio" class="relative bg-gradient-to-r from-indigo-600 via-indigo-500 to-sky-500 text-white overflow-hidden py-12 md:py-16">
+        <div class="absolute -top-10 -left-10 w-72 h-72 bg-sky-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 pointer-events-none animate-pulse"></div>
+        <div class="absolute -bottom-10 -right-10 w-80 h-80 bg-indigo-900 rounded-full mix-blend-multiply filter blur-3xl opacity-40 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col items-center text-center max-w-3xl mx-auto">
+                
+                <div class="flex flex-wrap items-center justify-center gap-2 mb-4">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-sky-500/30 backdrop-blur-md text-sky-100 border border-sky-400/40">
+                        <span class="w-2 h-2 rounded-full bg-sky-300 mr-2 animate-ping"></span>
+                        <span class="w-2 h-2 rounded-full bg-sky-300 mr-1.5 -ml-3.5"></span>
+                        Atención 24/7 con IA
+                    </span>
+                </div>
+
+                <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight text-white mb-4">
+                    Todo para la U, <br class="hidden sm:inline"/><span class="text-sky-200">ahora más cerca de ti.</span>
+                </h1>
+
+                <p class="text-base sm:text-lg text-sky-100 max-w-2xl mb-8 font-normal leading-relaxed">
+                    Explora nuestro catálogo de papelería, tecnología y accesorios. Conversa directamente con Kit, nuestro asistente virtual en Telegram.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
+                    <a href="#catalogo" class="w-full sm:w-auto px-7 py-3 rounded-full bg-white text-indigo-600 font-bold text-sm shadow-xl hover:bg-slate-100 hover:shadow-2xl transition transform hover:-translate-y-0.5 text-center">
+                        <i class="fa-solid fa-bag-shopping mr-2"></i> Ver productos
+                    </a>
+                    <a id="hero-telegram-btn" href="https://t.me/UniKitMVP_bot" target="_blank" class="w-full sm:w-auto px-7 py-3 rounded-full bg-sky-500 hover:bg-sky-600 text-white font-bold text-sm shadow-xl hover:shadow-2xl transition transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-telegram text-lg"></i> Hablar con Asistente UniKit
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORÍAS Y CATÁLOGO DE PRODUCTOS -->
+    <section id="catalogo" class="py-12 bg-slate-50 flex-grow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-8">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Selecciona tu producto universitario</h2>
+                <p class="text-slate-500 text-sm mt-1">Haz clic en cualquier artículo para consultar detalles o realizar tu pedido por Telegram</p>
+            </div>
+
+            <!-- Tabs de Filtro de Categorías -->
+            <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-4 mb-10">
+                <button onclick="filterCategory('all')" id="tab-all" class="category-tab active bg-indigo-600 text-white px-5 py-2.5 rounded-xl font-medium text-sm transition shadow-sm flex items-center gap-2">
+                    <i class="fa-solid fa-border-all"></i> Todos los productos
+                </button>
+                <button onclick="filterCategory('papeleria')" id="tab-papeleria" class="category-tab bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 px-5 py-2.5 rounded-xl font-medium text-sm transition shadow-sm flex items-center gap-2">
+                    <i class="fa-solid fa-pen-ruler text-indigo-500"></i> Papelería
+                </button>
+                <button onclick="filterCategory('tecnologia')" id="tab-tecnologia" class="category-tab bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 px-5 py-2.5 rounded-xl font-medium text-sm transition shadow-sm flex items-center gap-2">
+                    <i class="fa-solid fa-microchip text-sky-500"></i> Tecnología
+                </button>
+                <button onclick="filterCategory('accesorios')" id="tab-accesorios" class="category-tab bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 px-5 py-2.5 rounded-xl font-medium text-sm transition shadow-sm flex items-center gap-2">
+                    <i class="fa-solid fa-bag-shopping text-emerald-500"></i> Accesorios
+                </button>
+            </div>
+
+            <!-- Grid Dinámico de Productos UniKit -->
+            <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Se renderiza vía JS -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- DIAGRAMA DE FLUJO TÉCNICO (LEAN STARTUP) -->
+    <section id="flujo-tecnico" class="py-12 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="text-indigo-600 font-bold text-xs uppercase tracking-wider">Arquitectura Conversacional MVP</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">Flujo Técnico del Agente de Ventas</h2>
+                <p class="text-slate-500 text-sm max-w-2xl mx-auto mt-2">
+                    Integración del ciclo de respuesta automatizada para atender requerimientos de estudiantes de Unicomfacauca.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-center relative">
+                <!-- Paso 1 -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 text-center relative hover:shadow-md transition group">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center mx-auto mb-3 font-bold text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block mb-1">Paso 1</span>
+                    <h3 class="font-bold text-slate-800 text-sm">Landing Page</h3>
+                    <p class="text-xs text-slate-500 mt-1">El estudiante explora UniKit y elige un producto con Deep Link.</p>
+                </div>
+
+                <div class="hidden md:flex justify-center text-slate-300">
+                    <i class="fa-solid fa-chevron-right text-xl"></i>
+                </div>
+
+                <!-- Paso 2 -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 text-center relative hover:shadow-md transition group">
+                    <div class="w-12 h-12 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center mx-auto mb-3 font-bold text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-telegram"></i>
+                    </div>
+                    <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block mb-1">Paso 2</span>
+                    <h3 class="font-bold text-slate-800 text-sm">Telegram Bot</h3>
+                    <p class="text-xs text-slate-500 mt-1">Recibe la referencia del producto mediante comando /start.</p>
+                </div>
+
+                <div class="hidden md:flex justify-center text-slate-300">
+                    <i class="fa-solid fa-chevron-right text-xl"></i>
+                </div>
+
+                <!-- Paso 3 -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 text-center relative hover:shadow-md transition group">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center mx-auto mb-3 font-bold text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block mb-1">Paso 3</span>
+                    <h3 class="font-bold text-slate-800 text-sm">Agente Kit & Gemini API</h3>
+                    <p class="text-xs text-slate-500 mt-1">Python procesa la conversación conservando la memoria contextual.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PIE DE PÁGINA ACADÉMICO -->
+    <footer class="bg-slate-900 text-slate-400 py-10 border-t border-slate-800 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-bold text-sm">
+                            U
+                        </div>
+                        <span class="text-white font-bold text-lg">UniKit</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Solución MVP conversacional para la adquisición simplificada de útiles, dispositivos y accesorios universitarios.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold text-sm mb-3">Mención Oficial Institucional</h4>
+                    <ul class="text-xs space-y-1.5 text-slate-400">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-graduation-cap text-indigo-400"></i> Corporación Universitaria Comfacauca</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-university text-indigo-400"></i> Unicomfacauca - Popayán</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-book-bookmark text-indigo-400"></i> Electiva Administrativa</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold text-sm mb-3">Dirección de Proyecto</h4>
+                    <p class="text-xs text-slate-400">
+                        <strong>Docente Líder:</strong> Mag. Julio Ricardo Martínez Montezuma<br/>
+                        <strong>Metodología:</strong> Lean Startup (Construir - Medir - Aprender)<br/>
+                        <strong>Fase Actual:</strong> CONSTRUIR (MVP Conversacional)
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 pt-6 text-center text-xs text-slate-500">
+                <p>© 2026 UniKit - Unicomfacauca. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL INTERACTIVO DE CONSULTA / PEDIDO -->
+    <div id="order-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-md hidden transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 overflow-hidden transform transition-all scale-95 duration-300" id="modal-container">
+            
+            <div class="bg-gradient-to-r from-indigo-600 to-sky-500 p-5 text-white relative">
+                <button onclick="closeModal()" class="absolute top-4 right-4 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 w-8 h-8 rounded-full flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <span class="text-[11px] font-semibold uppercase tracking-wider text-sky-200">Consultar Producto Universitario</span>
+                <h3 id="modal-product-name" class="text-xl font-bold mt-0.5">Nombre del Producto</h3>
+                <div class="flex items-center gap-2 mt-2">
+                    <span id="modal-product-code" class="bg-white/20 text-xs px-2 py-0.5 rounded font-mono">PAP-01</span>
+                    <span id="modal-product-price" class="text-lg font-extrabold text-white">$0</span>
+                </div>
+            </div>
+
+            <div class="p-6">
+                <h3 class="text-base font-semibold text-slate-800 mb-2">¿Te interesa este producto?</h3>
+                    <label class="block text-xs font-medium text-slate-600 mb-2">Consulta la disponibilidad en el chatbot de UniKit o copia el mensaje de ejemplo y pégalo en el chat.</label>
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-700 text-xs font-mono relative mb-4 leading-relaxed">
+                    <p id="modal-message-text">Hola UniKit 👋, quiero consultar el producto...</p>
+                </div>
+
+                <div class="flex flex-col gap-2.5">
+                    <a id="modal-start-link" href="#" target="_blank" class="w-full bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-4 rounded-xl text-sm flex items-center justify-center gap-2 shadow-lg hover:shadow-sky-500/25 transition">
+                        <i class="fa-brands fa-telegram text-lg"></i> Abrir en Telegram
+                    </a>
+                    <button onclick="copyModalMessage()" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-2 transition">
+                        <i class="fa-regular fa-copy"></i> Copiar texto de consulta
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- NOTIFICACIÓN TOAST -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 bg-slate-900 text-white text-xs font-medium px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 transition-all duration-300 transform translate-y-10 opacity-0 pointer-events-none">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
+        <span id="toast-message">¡Texto de consulta copiado al portapapeles!</span>
+    </div>
+
+    <script>
+        // Catálogo oficial UniKit MVP
+        const products = [
+            {
+                id: 'PAP-01',
+                category: 'papeleria',
+                brand: 'Norma',
+                color: 'Azul / Variados',
+                name: 'Cuaderno Profesional Norma 100 hojas',
+                price: 8900,
+                description: 'El clásico para tus apuntes: cuaderno profesional cuadriculado con tapa dura.',
+                specs: [
+                    '100 hojas cuadriculadas',
+                    'Tapa dura resistente',
+                    'Tamaño carta (21.5 × 27.5 cm)',
+                    'Papel de alta calidad 75 g/m²'
+                ],
+                image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80'
+            },
+            {
+                id: 'PAP-02',
+                category: 'papeleria',
+                brand: 'Bic',
+                color: 'Multicolor',
+                name: 'Kit 5 Esferos Bic Cristal',
+                price: 6900,
+                description: 'Pack de esferos Bic Cristal para escribir con fluidez todo el semestre.',
+                specs: [
+                    '5 unidades por kit',
+                    'Punta fina 1.0 mm',
+                    'Tinta de secado rápido',
+                    'Colores: azul, negro y rojo'
+                ],
+                image: 'https://images.unsplash.com/photo-1585336261026-8f5786372966?auto=format&fit=crop&w=600&q=80'
+            },
+            {
+                id: 'PAP-03',
+                category: 'papeleria',
+                brand: 'Artesco',
+                color: 'Negro',
+                name: 'Archivador de Palanca Artesco',
+                price: 15900,
+                description: 'Organiza tus documentos y parciales con este archivador de palanca.',
+                specs: [
+                    'Tamaño carta estándar',
+                    'Lomo ancho de 70 mm',
+                    'Palanca metálica de archivo',
+                    'Tapa rígida reforzada'
+                ],
+                image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=600&q=80'
+            },
+            {
+                id: 'TEC-01',
+                category: 'tecnologia',
+                brand: 'Xiaomi',
+                color: 'Blanco',
+                name: 'Audífonos Inalámbricos Redmi Buds 4 Lite',
+                price: 99900,
+                description: 'Sonido inalámbrico cómodo para estudiar y asistir a clases virtuales.',
+                specs: [
+                    'Conectividad Bluetooth 5.3',
+                    'Hasta 7 h (+21 h con estuche)',
+                    'Resistencia IP54 al sudor/agua',
+                    'Estuche de carga USB-C'
+                ],
+                image: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=600&q=80'
+            },
+            {
+                id: 'TEC-02',
+                category: 'tecnologia',
+                brand: 'SanDisk',
+                color: 'Negro/Rojo',
+                name: 'Memoria USB SanDisk Cruzer Blade 64GB',
+                price: 39900,
+                description: 'Almacenamiento portátil y confiable para trabajos, diapositivas y respaldos.',
+                specs: [
+                    '64 GB de almacenamiento',
+                    'Conector USB 2.0',
+                    'Diseño sin tapa ultracompacto',
+                    'Software de protección de archivos'
+                ],
+                image: 'https://images.unsplash.com/photo-1618410320928-25228d811631?auto=format&fit=crop&w=600&q=80'
+            },
+            {
+                id: 'TEC-03',
+                category: 'tecnologia',
+                brand: 'Xiaomi',
+                color: 'Negro',
+                name: 'Power Bank Xiaomi 10.000 mAh',
+                price: 119900,
+                description: 'Energía de respaldo para que tu celular aguante toda la jornada en la U.',
+                specs: [
+                    'Capacidad real de 10.000 mAh',
+                    '2 salidas USB-A + entrada USB-C',
+                    'Carga rápida de 18 W',
+                    'Protección contra sobrecarga'
+                ],
+                image: 'https://images.unsplash.com/photo-1609592424109-dd9892f1b177?auto=format&fit=crop&w=600&q=80'
+            },
+            {
+                id: 'ACC-01',
+                category: 'accesorios',
+                brand: 'UniKit',
+                color: 'Plata / Negro',
+                name: 'Termo Acero Inoxidable 750 ml',
+                price: 54900,
+                description: 'Hidratación todo el día: frío o caliente donde sea que estudies.',
+                specs: [
+                    'Acero inoxidable doble pared',
+                    '12 h frío / 6 h caliente',
+                    'Tapa hermética antigoteo',
+                    'Libre de BPA'
+                ],
+                image: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&q=80'
+            },
+            {
+                id: 'ACC-02',
+                category: 'accesorios',
+                brand: 'UniKit',
+                color: 'Gris / Negro',
+                name: 'Mochila Antirrobo con Puerto USB',
+                price: 129900,
+                description: 'Tu laptop y tus libros seguros, con bolsillo antirrobo y puerto USB.',
+                specs: [
+                    'Compartimento para laptop 15”',
+                    'Puerto USB externo para carga',
+                    'Lona impermeable de alta densidad',
+                    'Capacidad aproximada de 20 L'
+                ],
+                image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80'
+            },
+            {
+                id: 'ACC-03',
+                category: 'accesorios',
+                brand: 'Artesco',
+                color: 'Azul Oscuro',
+                name: 'Estuche Triple Cierre Artesco',
+                price: 24900,
+                description: 'Todo tu material de escritura organizado en un solo lugar.',
+                specs: [
+                    '3 compartimentos independientes',
+                    'Cierre reinforced de alta duración',
+                    'Tela poliéster muy resistente',
+                    'Asa lateral de transporte'
+                ],
+                image: 'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=600&q=80'
+            }
+        ];
+
+        let selectedProduct = null;
+        // Nombre del bot ajustado correctamente a UniKitMVP_bot
+        const BOT_USERNAME = 'UniKitMVP_bot';
+
+        // Formateador moneda COP
+        function formatCOP(amount) {
+            return '$' + amount.toLocaleString('es-CO');
+        }
+
+        function renderProducts(filter = 'all') {
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = '';
+
+            const filteredProducts = filter === 'all' 
+                ? products 
+                : products.filter(p => p.category === filter);
+
+            filteredProducts.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition duration-300 flex flex-col group';
+                
+                let categoryBadgeColor = 'bg-indigo-100 text-indigo-700';
+                if(product.category === 'tecnologia') categoryBadgeColor = 'bg-sky-100 text-sky-700';
+                if(product.category === 'accesorios') categoryBadgeColor = 'bg-emerald-100 text-emerald-700';
+
+                card.innerHTML = `
+                    <div class="relative h-48 overflow-hidden bg-slate-100">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute top-3 left-3 flex gap-1.5">
+                            <span class="font-mono text-xs font-bold bg-slate-900/80 text-white px-2.5 py-1 rounded-md backdrop-blur-md">
+                                ${product.id}
+                            </span>
+                            <span class="text-xs font-semibold ${categoryBadgeColor} px-2.5 py-1 rounded-md capitalize">
+                                ${product.category}
+                            </span>
+                        </div>
+                        <div class="absolute bottom-2 right-2 bg-white/90 backdrop-blur-md px-2 py-0.5 rounded text-[10px] font-medium text-slate-600">
+                            ${product.brand} • ${product.color}
+                        </div>
+                    </div>
+
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-base leading-snug mb-2 group-hover:text-indigo-600 transition">
+                                ${product.name}
+                            </h3>
+                            <p class="text-slate-500 text-xs mb-4 leading-relaxed">
+                                ${product.description}
+                            </p>
+
+                            <div class="space-y-1.5 mb-5">
+                                ${product.specs.map(spec => `
+                                    <div class="flex items-start text-xs text-slate-600">
+                                        <i class="fa-solid fa-check text-emerald-500 mt-0.5 mr-2 shrink-0"></i>
+                                        <span>${spec}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between mt-auto">
+                            <div>
+                                <span class="text-[10px] uppercase font-semibold text-slate-400 block">Precio Estudiante</span>
+                                <span class="text-lg font-extrabold text-slate-900">${formatCOP(product.price)}</span>
+                            </div>
+                            <button onclick="openModal('${product.id}')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-md hover:shadow-indigo-500/20 transition flex items-center gap-1.5 active:scale-95">
+                                <i class="fa-brands fa-telegram text-sm"></i> Pedir
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterCategory(category) {
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.classList.remove('bg-indigo-600', 'text-white');
+                tab.classList.add('bg-white', 'text-slate-700', 'hover:bg-slate-100');
+            });
+
+            const activeTab = document.getElementById(`tab-${category}`);
+            if(activeTab) {
+                activeTab.classList.remove('bg-white', 'text-slate-700', 'hover:bg-slate-100');
+                activeTab.classList.add('bg-indigo-600', 'text-white');
+            }
+
+            renderProducts(category);
+        }
+
+        function openModal(productId) {
+            selectedProduct = products.find(p => p.id === productId);
+            if(!selectedProduct) return;
+
+            document.getElementById('modal-product-name').textContent = selectedProduct.name;
+            document.getElementById('modal-product-code').textContent = selectedProduct.id;
+            document.getElementById('modal-product-price').textContent = formatCOP(selectedProduct.price);
+
+            const suggestedMsg = `Hola UniKit 👋, quiero consultar el producto [${selectedProduct.id}] — ${selectedProduct.name} (${formatCOP(selectedProduct.price)}). ¿Tienen disponibilidad?`;
+            
+            document.getElementById('modal-message-text').textContent = suggestedMsg;
+
+            // Link directo vía Deep Link /start
+            const directLink = `https://t.me/${BOT_USERNAME}?start=${selectedProduct.id}`;
+            document.getElementById('modal-start-link').href = directLink;
+
+            const modal = document.getElementById('order-modal');
+            const container = document.getElementById('modal-container');
+            
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                container.classList.remove('scale-95');
+                container.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('order-modal');
+            const container = document.getElementById('modal-container');
+            
+            modal.classList.add('opacity-0');
+            container.classList.remove('scale-100');
+            container.classList.add('scale-95');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function copyModalMessage() {
+            const textToCopy = document.getElementById('modal-message-text').textContent;
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    showToast('¡Texto de consulta copiado!');
+                }).catch(() => {
+                    fallbackCopy(textToCopy);
+                });
+            } else {
+                fallbackCopy(textToCopy);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showToast('¡Texto de consulta copiado!');
+            } catch (err) {
+                showToast('Error al copiar el texto.');
+            }
+            document.body.removeChild(textArea);
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').textContent = message;
+
+            toast.classList.remove('translate-y-10', 'opacity-0', 'pointer-events-none');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-10', 'opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+
+        // Inicializar al cargar la página
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProducts('all');
+        });
+    </script>
+
+<!-- ========================================== -->
+<!-- BOTÓN FLOTANTE DE EVALUACIÓN - UNIKIT MVP  -->
+<!-- ========================================== -->
+<div class="contenedor-flotante-evaluacion">
+    <!-- Elemento adaptado con tus atributos de referencia y comportamiento flotante -->
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSd1zNNsgT_t-7vBrV_A7WrrSsGuoBtgZfg3fMjqXUQ11e7aEw/viewform?usp=publish-editor" class="icono-flotante btn-flotante-unikit" data-toggle="modal" data-target="#mdl-canales" alt="canales de servicio" name="icono-canales" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 7H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            <line x1="9" y1="9" x2="15" y2="9"></line>
+            <line x1="9" y1="13" x2="13" y2="13"></line>
+        </svg>
+        <span>Evalúa UniKit</span>
+    </a>
+</div>
+
+<!-- ESTILOS CSS PARA FIJAR EL BOTÓN EN LA PANTALLA -->
+<style>
+    .contenedor-flotante-evaluacion {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        z-index: 9999; /* Asegura que flote por encima de todo el contenido */
+    }
+
+    .btn-flotante-unikit {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #4f46e5; /* Color principal índigo de UniKit */
+        color: #ffffff !important;
+        padding: 12px 20px;
+        border-radius: 50px; /* Estilo píldora flotante */
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-decoration: none;
+        box-shadow: 0 4px 20px rgba(79, 70, 229, 0.4);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .btn-flotante-unikit:hover {
+        background: #4338ca;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 24px rgba(79, 70, 229, 0.6);
+        color: #ffffff !important;
+    }
+</style>
+
+</body>
+</html>
